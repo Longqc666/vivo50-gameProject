@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec070700593eee74085e08b399d3cded, type: 3}
+  m_Name: D225_Item_Fuse
+  m_EditorClassIdentifier: 
+  itemId: item.fuse
+  displayName: "\u4FDD\u9669\u4E1D"
+  description: "\u8BBE\u5907\u95F4\u5DE5\u5177\u67DC\u91CC\u7684\u5907\u7528\u4FDD\u9669\u4E1D\uFF0C\u94DC\u4E1D\u8FD8\u6CA1\u70E7\u65AD\u3002\n\u628A\u5B83\u88C5\u56DE\u8D70\u5ECA\u7684\u914D\u7535\u7BB1\u3002"
+  icon: {fileID: 21300000, guid: 3f2227fd5b90a9146874b5eccacde512, type: 3}
+  category: 1
+  stackable: 0
+  pickupFlag: 3
+  inspectFlag: 0
