@@ -363,6 +363,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8726646718150240228, guid: 1cd9eb5eff91c0c4f85ec95c04304310, type: 3}
   m_PrefabInstance: {fileID: 5778342610057933696}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &723069762 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 412319269173184500, guid: 1cd9eb5eff91c0c4f85ec95c04304310, type: 3}
+  m_PrefabInstance: {fileID: 5778342610057933696}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd259d81aa0b6e848acfe6d29f9c27c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1074832036
 GameObject:
   m_ObjectHideFlags: 0
@@ -804,6 +815,7 @@ GameObject:
   - component: {fileID: 1522053572}
   - component: {fileID: 1522053574}
   - component: {fileID: 1522053573}
+  - component: {fileID: 1522053575}
   m_Layer: 5
   m_Name: ControlsHint
   m_TagString: Untagged
@@ -929,6 +941,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1522053571}
   m_CullTransparentMesh: 1
+--- !u!114 &1522053575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522053571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61cbbca60064b2a429ea20d70aa861ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 723069762}
+  hintText: {fileID: 1522053573}
+  moveRequiredTime: 2
+  runRequiredTime: 2
+  completedDisplayTime: 3
 --- !u!1 &1616009980
 GameObject:
   m_ObjectHideFlags: 0
