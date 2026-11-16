@@ -18,6 +18,7 @@ public class PlayerInteractor : MonoBehaviour
 
     public string CurrentPrompt => currentPrompt;
     public string LastFeedback => lastFeedback;
+    public int FeedbackVersion { get; private set; }
 
     private void Start()
     {
@@ -57,6 +58,7 @@ public class PlayerInteractor : MonoBehaviour
             if (result.HasMessage)
             {
                 lastFeedback = result.Message;
+                FeedbackVersion++;
                 Debug.Log("玩家交互：" + result.Message, this);
             }
         }
