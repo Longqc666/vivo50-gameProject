@@ -51,7 +51,8 @@ public class PlayerController : MonoBehaviour
         bool wantsToRun =
             !controlLocked &&
             Input.GetKey(KeyCode.LeftShift) &&
-            moveInput != 0f;
+            moveInput != 0f &&
+            IsMoving;
 
         isRunning =
             wantsToRun &&
