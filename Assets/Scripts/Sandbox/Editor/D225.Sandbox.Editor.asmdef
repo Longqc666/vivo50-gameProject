@@ -1,0 +1,20 @@
+{
+    "name": "D225.Sandbox.Editor",
+    "rootNamespace": "D225.Sandbox.Editor",
+    "references": [
+        "D225.Sandbox",
+        "D225.Interact",
+        "D225.Quest"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

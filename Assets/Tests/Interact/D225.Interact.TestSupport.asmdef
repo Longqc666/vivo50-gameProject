@@ -1,0 +1,19 @@
+{
+    "name": "D225.Interact.TestSupport",
+    "rootNamespace": "D225.Interact.Tests",
+    "references": [
+        "D225.Interact",
+        "D225.Quest"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

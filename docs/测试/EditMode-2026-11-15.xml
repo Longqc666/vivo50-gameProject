@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="46" result="Passed" total="46" passed="46" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.1230753">
+  <test-suite type="TestSuite" id="1061" name="D225" fullname="D225" runstate="Runnable" testcasecount="46" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.123075" total="46" passed="46" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties />
+    <test-suite type="Assembly" id="1117" name="D225.Interact.Tests.dll" fullname="D:/gameProject/repo/Library/ScriptAssemblies/D225.Interact.Tests.dll" runstate="Runnable" testcasecount="46" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.111815" total="46" passed="46" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="1704" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+      </properties>
+      <test-suite type="TestSuite" id="1118" name="D225" fullname="D225" runstate="Runnable" testcasecount="46" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.108322" total="46" passed="46" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1119" name="Interact" fullname="D225.Interact" runstate="Runnable" testcasecount="46" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.106045" total="46" passed="46" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1120" name="Tests" fullname="D225.Interact.Tests" runstate="Runnable" testcasecount="46" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.102047" total="46" passed="46" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1062" name="HidingSpotTests" fullname="D225.Interact.Tests.HidingSpotTests" classname="D225.Interact.Tests.HidingSpotTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.034136" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1065" name="CatchLocked_ActorCannotHideToAvoidCapture" fullname="D225.Interact.Tests.HidingSpotTests.CatchLocked_ActorCannotHideToAvoidCapture" methodname="CatchLocked_ActorCannotHideToAvoidCapture" classname="D225.Interact.Tests.HidingSpotTests" runstate="Runnable" seed="2013655129" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.018426" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1063" name="EnterAndExit_TogglesOccupancyAndCallsActor" fullname="D225.Interact.Tests.HidingSpotTests.EnterAndExit_TogglesOccupancyAndCallsActor" methodname="EnterAndExit_TogglesOccupancyAndCallsActor" classname="D225.Interact.Tests.HidingSpotTests" runstate="Runnable" seed="1757716327" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.002912" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1067" name="ForceRelease_ClearsOccupantForCheckpointReset" fullname="D225.Interact.Tests.HidingSpotTests.ForceRelease_ClearsOccupantForCheckpointReset" methodname="ForceRelease_ClearsOccupantForCheckpointReset" classname="D225.Interact.Tests.HidingSpotTests" runstate="Runnable" seed="1522494712" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.000586" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1068" name="HidingSpot_WithoutHidableActor_IsRejectedWithReason" fullname="D225.Interact.Tests.HidingSpotTests.HidingSpot_WithoutHidableActor_IsRejectedWithReason" methodname="HidingSpot_WithoutHidableActor_IsRejectedWithReason" classname="D225.Interact.Tests.HidingSpotTests" runstate="Runnable" seed="1324390014" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.000500" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1066" name="LockedSpot_RejectsEvenWithoutOccupant" fullname="D225.Interact.Tests.HidingSpotTests.LockedSpot_RejectsEvenWithoutOccupant" methodname="LockedSpot_RejectsEvenWithoutOccupant" classname="D225.Interact.Tests.HidingSpotTests" runstate="Runnable" seed="768667747" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.000561" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1064" name="OccupiedSpot_RejectsSecondActor" fullname="D225.Interact.Tests.HidingSpotTests.OccupiedSpot_RejectsSecondActor" methodname="OccupiedSpot_RejectsSecondActor" classname="D225.Interact.Tests.HidingSpotTests" runstate="Runnable" seed="1686928524" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.000688" asserts="0">
+                <properties />
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1069" name="InspectableClueTests" fullname="D225.Interact.Tests.InspectableClueTests" classname="D225.Interact.Tests.InspectableClueTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.005968" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1070" name="Inspect_RecordsClueAndWritesFlag" fullname="D225.Interact.Tests.InspectableClueTests.Inspect_RecordsClueAndWritesFlag" methodname="Inspect_RecordsClueAndWritesFlag" classname="D225.Interact.Tests.InspectableClueTests" runstate="Runnable" seed="1017807362" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.001867" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1071" name="Inspect_SecondTime_IsAllowedButDoesNotDuplicateClue" fullname="D225.Interact.Tests.InspectableClueTests.Inspect_SecondTime_IsAllowedButDoesNotDuplicateClue" methodname="Inspect_SecondTime_IsAllowedButDoesNotDuplicateClue" classname="D225.Interact.Tests.InspectableClueTests" runstate="Runnable" seed="327770184" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.000568" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1072" name="Inspect_WithoutFlag_DoesNotWriteAnyQuestFlag" fullname="D225.Interact.Tests.InspectableClueTests.Inspect_WithoutFlag_DoesNotWriteAnyQuestFlag" methodname="Inspect_WithoutFlag_DoesNotWriteAnyQuestFlag" classname="D225.Interact.Tests.InspectableClueTests" runstate="Runnable" seed="396410746" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.000380" asserts="0">
+                <properties />
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1073" name="InteractionPromptTests" fullname="D225.Interact.Tests.InteractionPromptTests" classname="D225.Interact.Tests.InteractionPromptTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.004869" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1077" name="Action_BuildsCustomVerbPrompt" fullname="D225.Interact.Tests.InteractionPromptTests.Action_BuildsCustomVerbPrompt" methodname="Action_BuildsCustomVerbPrompt" classname="D225.Interact.Tests.InteractionPromptTests" runstate="Runnable" seed="1258213207" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.000367" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1074" name="For_AvailableStates_UsesChineseVerb" fullname="D225.Interact.Tests.InteractionPromptTests.For_AvailableStates_UsesChineseVerb" methodname="For_AvailableStates_UsesChineseVerb" classname="D225.Interact.Tests.InteractionPromptTests" runstate="Runnable" seed="1162414330" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.000151" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1075" name="For_Unavailable_ReturnsReasonWithoutKeyHint" fullname="D225.Interact.Tests.InteractionPromptTests.For_Unavailable_ReturnsReasonWithoutKeyHint" methodname="For_Unavailable_ReturnsReasonWithoutKeyHint" classname="D225.Interact.Tests.InteractionPromptTests" runstate="Runnable" seed="1638086139" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.001307" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1076" name="KeyLabel_CanBeChangedForRebinding" fullname="D225.Interact.Tests.InteractionPromptTests.KeyLabel_CanBeChangedForRebinding" methodname="KeyLabel_CanBeChangedForRebinding" classname="D225.Interact.Tests.InteractionPromptTests" runstate="Runnable" seed="1659330943" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.000565" asserts="0">
+                <properties />
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1078" name="InventoryTests" fullname="D225.Interact.Tests.InventoryTests" classname="D225.Interact.Tests.InventoryTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.012520" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1083" name="AddClue_RecordsOnceAndRaisesClueEventOnce" fullname="D225.Interact.Tests.InventoryTests.AddClue_RecordsOnceAndRaisesClueEventOnce" methodname="AddClue_RecordsOnceAndRaisesClueEventOnce" classname="D225.Interact.Tests.InventoryTests" runstate="Runnable" seed="1111626546" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.001569" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1079" name="TryAdd_MainItem_RejectsDuplicateAndRaisesEventOnce" fullname="D225.Interact.Tests.InventoryTests.TryAdd_MainItem_RejectsDuplicateAndRaisesEventOnce" methodname="TryAdd_MainItem_RejectsDuplicateAndRaisesEventOnce" classname="D225.Interact.Tests.InventoryTests" runstate="Runnable" seed="377816721" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.001597" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1084" name="TryAdd_NullItem_LogsErrorAndReturnsReason" fullname="D225.Interact.Tests.InventoryTests.TryAdd_NullItem_LogsErrorAndReturnsReason" methodname="TryAdd_NullItem_LogsErrorAndReturnsReason" classname="D225.Interact.Tests.InventoryTests" runstate="Runnable" seed="66355591" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.003978" asserts="0">
+                <properties />
+                <output><![CDATA[[D225] Inventory.TryAdd 收到空的 ItemData，请检查 Prefab 引用。
+]]></output>
+              </test-case>
+              <test-case id="1080" name="TryAdd_StackableItem_AccumulatesCountWithoutDuplicateEntries" fullname="D225.Interact.Tests.InventoryTests.TryAdd_StackableItem_AccumulatesCountWithoutDuplicateEntries" methodname="TryAdd_StackableItem_AccumulatesCountWithoutDuplicateEntries" classname="D225.Interact.Tests.InventoryTests" runstate="Runnable" seed="790541790" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.000684" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1081" name="TryConsume_RemovesItemAndRaisesRemovedEvent" fullname="D225.Interact.Tests.InventoryTests.TryConsume_RemovesItemAndRaisesRemovedEvent" methodname="TryConsume_RemovesItemAndRaisesRemovedEvent" classname="D225.Interact.Tests.InventoryTests" runstate="Runnable" seed="2115246309" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.001429" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1082" name="TryConsume_WhenNotEnough_KeepsInventoryUntouched" fullname="D225.Interact.Tests.InventoryTests.TryConsume_WhenNotEnough_KeepsInventoryUntouched" methodname="TryConsume_WhenNotEnough_KeepsInventoryUntouched" classname="D225.Interact.Tests.InventoryTests" runstate="Runnable" seed="768676457" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.000627" asserts="0">
+                <properties />
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1085" name="PickupItemTests" fullname="D225.Interact.Tests.PickupItemTests" classname="D225.Interact.Tests.PickupItemTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.005679" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1089" name="EvaluateState_IsSideEffectFree" fullname="D225.Interact.Tests.PickupItemTests.EvaluateState_IsSideEffectFree" methodname="EvaluateState_IsSideEffectFree" classname="D225.Interact.Tests.PickupItemTests" runstate="Runnable" seed="621463348" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.001374" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1086" name="Interact_FirstTime_PicksUpOnceAndWritesFlag" fullname="D225.Interact.Tests.PickupItemTests.Interact_FirstTime_PicksUpOnceAndWritesFlag" methodname="Interact_FirstTime_PicksUpOnceAndWritesFlag" classname="D225.Interact.Tests.PickupItemTests" runstate="Runnable" seed="1738760667" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.001606" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1087" name="Interact_SecondTime_IsRejectedAndDoesNotDuplicate" fullname="D225.Interact.Tests.PickupItemTests.Interact_SecondTime_IsRejectedAndDoesNotDuplicate" methodname="Interact_SecondTime_IsRejectedAndDoesNotDuplicate" classname="D225.Interact.Tests.PickupItemTests" runstate="Runnable" seed="1729706167" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.000806" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1088" name="Interact_WithoutInventory_IsRejected" fullname="D225.Interact.Tests.PickupItemTests.Interact_WithoutInventory_IsRejected" methodname="Interact_WithoutInventory_IsRejected" classname="D225.Interact.Tests.PickupItemTests" runstate="Runnable" seed="471694032" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.000506" asserts="0">
+                <properties />
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1090" name="PuzzleChainTests" fullname="D225.Interact.Tests.PuzzleChainTests" classname="D225.Interact.Tests.PuzzleChainTests" runstate="Runnable" testcasecount="11" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.008329" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1101" name="FullChain_CompletesInDesignOrder" fullname="D225.Interact.Tests.PuzzleChainTests.FullChain_CompletesInDesignOrder" methodname="FullChain_CompletesInDesignOrder" classname="D225.Interact.Tests.PuzzleChainTests" runstate="Runnable" seed="478018900" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.003100" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1093" name="T07_FuseBox_AfterSolved_RejectsRepeatWithoutDuplicating" fullname="D225.Interact.Tests.PuzzleChainTests.T07_FuseBox_AfterSolved_RejectsRepeatWithoutDuplicating" methodname="T07_FuseBox_AfterSolved_RejectsRepeatWithoutDuplicating" classname="D225.Interact.Tests.PuzzleChainTests" runstate="Runnable" seed="264570222" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.000516" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1092" name="T07_FuseBox_WithFuse_RestoresPowerAndConsumesFuse" fullname="D225.Interact.Tests.PuzzleChainTests.T07_FuseBox_WithFuse_RestoresPowerAndConsumesFuse" methodname="T07_FuseBox_WithFuse_RestoresPowerAndConsumesFuse" classname="D225.Interact.Tests.PuzzleChainTests" runstate="Runnable" seed="1964154667" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.000485" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1091" name="T07_FuseBox_WithoutFuse_ReportsMissingMaterial" fullname="D225.Interact.Tests.PuzzleChainTests.T07_FuseBox_WithoutFuse_ReportsMissingMaterial" methodname="T07_FuseBox_WithoutFuse_ReportsMissingMaterial" classname="D225.Interact.Tests.PuzzleChainTests" runstate="Runnable" seed="1114600688" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.000409" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1094" name="T08_StairDoor_WithoutPower_ReportsNoPower" fullname="D225.Interact.Tests.PuzzleChainTests.T08_StairDoor_WithoutPower_ReportsNoPower" methodname="T08_StairDoor_WithoutPower_ReportsNoPower" classname="D225.Interact.Tests.PuzzleChainTests" runstate="Runnable" seed="142230682" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.000308" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1096" name="T08_StairDoor_WithPowerAndKey_UnlocksAndKeepsKey" fullname="D225.Interact.Tests.PuzzleChainTests.T08_StairDoor_WithPowerAndKey_UnlocksAndKeepsKey" methodname="T08_StairDoor_WithPowerAndKey_UnlocksAndKeepsKey" classname="D225.Interact.Tests.PuzzleChainTests" runstate="Runnable" seed="1737735250" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.000366" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1095" name="T08_StairDoor_WithPowerButNoKey_ReportsMissingKey" fullname="D225.Interact.Tests.PuzzleChainTests.T08_StairDoor_WithPowerButNoKey_ReportsMissingKey" methodname="T08_StairDoor_WithPowerButNoKey_ReportsMissingKey" classname="D225.Interact.Tests.PuzzleChainTests" runstate="Runnable" seed="1753765042" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.000331" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1100" name="T11_EvacuationZone_AfterExitUnlocked_CompletesOnlyOnce" fullname="D225.Interact.Tests.PuzzleChainTests.T11_EvacuationZone_AfterExitUnlocked_CompletesOnlyOnce" methodname="T11_EvacuationZone_AfterExitUnlocked_CompletesOnlyOnce" classname="D225.Interact.Tests.PuzzleChainTests" runstate="Runnable" seed="330259953" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.000430" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1099" name="T11_EvacuationZone_BeforeExitUnlocked_DoesNotComplete" fullname="D225.Interact.Tests.PuzzleChainTests.T11_EvacuationZone_BeforeExitUnlocked_DoesNotComplete" methodname="T11_EvacuationZone_BeforeExitUnlocked_DoesNotComplete" classname="D225.Interact.Tests.PuzzleChainTests" runstate="Runnable" seed="1757933166" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.000372" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1098" name="T11_ExitSwitch_AfterStairDoor_UnlocksExit" fullname="D225.Interact.Tests.PuzzleChainTests.T11_ExitSwitch_AfterStairDoor_UnlocksExit" methodname="T11_ExitSwitch_AfterStairDoor_UnlocksExit" classname="D225.Interact.Tests.PuzzleChainTests" runstate="Runnable" seed="1798983649" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.000297" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1097" name="T11_ExitSwitch_BeforeStairDoor_DoesNotUnlockExit" fullname="D225.Interact.Tests.PuzzleChainTests.T11_ExitSwitch_BeforeStairDoor_DoesNotUnlockExit" methodname="T11_ExitSwitch_BeforeStairDoor_DoesNotUnlockExit" classname="D225.Interact.Tests.PuzzleChainTests" runstate="Runnable" seed="1727124303" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.000301" asserts="0">
+                <properties />
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1102" name="PuzzleObjectiveTrackerTests" fullname="D225.Interact.Tests.PuzzleObjectiveTrackerTests" classname="D225.Interact.Tests.PuzzleObjectiveTrackerTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.002468" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1104" name="Evaluate_AllDone_ReturnsEmpty" fullname="D225.Interact.Tests.PuzzleObjectiveTrackerTests.Evaluate_AllDone_ReturnsEmpty" methodname="Evaluate_AllDone_ReturnsEmpty" classname="D225.Interact.Tests.PuzzleObjectiveTrackerTests" runstate="Runnable" seed="446708454" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.000646" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1105" name="Evaluate_NullLog_ReturnsEmptyInsteadOfThrowing" fullname="D225.Interact.Tests.PuzzleObjectiveTrackerTests.Evaluate_NullLog_ReturnsEmptyInsteadOfThrowing" methodname="Evaluate_NullLog_ReturnsEmptyInsteadOfThrowing" classname="D225.Interact.Tests.PuzzleObjectiveTrackerTests" runstate="Runnable" seed="612593505" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.000552" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1103" name="Evaluate_ReturnsFirstUnfinishedObjective" fullname="D225.Interact.Tests.PuzzleObjectiveTrackerTests.Evaluate_ReturnsFirstUnfinishedObjective" methodname="Evaluate_ReturnsFirstUnfinishedObjective" classname="D225.Interact.Tests.PuzzleObjectiveTrackerTests" runstate="Runnable" seed="713201651" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.000524" asserts="0">
+                <properties />
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1106" name="PuzzlePrefabIntegrationTests" fullname="D225.Interact.Tests.PuzzlePrefabIntegrationTests" classname="D225.Interact.Tests.PuzzlePrefabIntegrationTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.021702" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1110" name="EvacuationZone_ColliderIsTrigger" fullname="D225.Interact.Tests.PuzzlePrefabIntegrationTests.EvacuationZone_ColliderIsTrigger" methodname="EvacuationZone_ColliderIsTrigger" classname="D225.Interact.Tests.PuzzlePrefabIntegrationTests" runstate="Runnable" seed="759252234" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.003736" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1113" name="FlashlightPrefab_CanBePickedOnlyOnce" fullname="D225.Interact.Tests.PuzzlePrefabIntegrationTests.FlashlightPrefab_CanBePickedOnlyOnce" methodname="FlashlightPrefab_CanBePickedOnlyOnce" classname="D225.Interact.Tests.PuzzlePrefabIntegrationTests" runstate="Runnable" seed="1208271670" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.002672" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1112" name="FuseBoxPrefab_CanRestorePowerAfterAddingRealFuseAsset" fullname="D225.Interact.Tests.PuzzlePrefabIntegrationTests.FuseBoxPrefab_CanRestorePowerAfterAddingRealFuseAsset" methodname="FuseBoxPrefab_CanRestorePowerAfterAddingRealFuseAsset" classname="D225.Interact.Tests.PuzzlePrefabIntegrationTests" runstate="Runnable" seed="1660357294" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.002650" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1109" name="HidingLocker_IsReadyToUse" fullname="D225.Interact.Tests.PuzzlePrefabIntegrationTests.HidingLocker_IsReadyToUse" methodname="HidingLocker_IsReadyToUse" classname="D225.Interact.Tests.PuzzlePrefabIntegrationTests" runstate="Runnable" seed="754813000" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.001735" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1107" name="ItemPrefabs_ReferenceExpectedItemData" fullname="D225.Interact.Tests.PuzzlePrefabIntegrationTests.ItemPrefabs_ReferenceExpectedItemData" methodname="ItemPrefabs_ReferenceExpectedItemData" classname="D225.Interact.Tests.PuzzlePrefabIntegrationTests" runstate="Runnable" seed="1331974485" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.005088" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1108" name="PuzzlePrefabs_HaveExpectedFlagsAndNames" fullname="D225.Interact.Tests.PuzzlePrefabIntegrationTests.PuzzlePrefabs_HaveExpectedFlagsAndNames" methodname="PuzzlePrefabs_HaveExpectedFlagsAndNames" classname="D225.Interact.Tests.PuzzlePrefabIntegrationTests" runstate="Runnable" seed="363491627" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.002155" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1111" name="QuestController_ProvidesObjectiveText" fullname="D225.Interact.Tests.PuzzlePrefabIntegrationTests.QuestController_ProvidesObjectiveText" methodname="QuestController_ProvidesObjectiveText" classname="D225.Interact.Tests.PuzzlePrefabIntegrationTests" runstate="Runnable" seed="1617171571" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.001471" asserts="0">
+                <properties />
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1114" name="TestDoubleDiagnostics" fullname="D225.Interact.Tests.TestDoubleDiagnostics" classname="D225.Interact.Tests.TestDoubleDiagnostics" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.001716" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1115" name="FakeHider_IsFoundByInterfaceLookup" fullname="D225.Interact.Tests.TestDoubleDiagnostics.FakeHider_IsFoundByInterfaceLookup" methodname="FakeHider_IsFoundByInterfaceLookup" classname="D225.Interact.Tests.TestDoubleDiagnostics" runstate="Runnable" seed="402696725" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.000592" asserts="0">
+                <properties />
+              </test-case>
+              <test-case id="1116" name="HidingSpot_ResolvesHiderOnActorRoot" fullname="D225.Interact.Tests.TestDoubleDiagnostics.HidingSpot_ResolvesHiderOnActorRoot" methodname="HidingSpot_ResolvesHiderOnActorRoot" classname="D225.Interact.Tests.TestDoubleDiagnostics" runstate="Runnable" seed="266597713" result="Passed" start-time="2026-11-15 11:28:55Z" end-time="2026-11-15 11:28:55Z" duration="0.000418" asserts="0">
+                <properties />
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>
