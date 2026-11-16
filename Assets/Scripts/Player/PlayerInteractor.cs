@@ -40,13 +40,23 @@ public class PlayerInteractor : MonoBehaviour
 
     private void Update()
     {
-        if (Time.timeScale == 0f || controller.IsControlLocked)
+        PlayerHiding hiding = GetComponent<PlayerHiding>();
+
+        bool isHidden = hiding != null && hiding.IsHidden;
+        bool isCaught = hiding != null && hiding.IsCatchLocked;
+
+        if (Time.timeScale == 0f ||
+            isCaught ||
+            (controller.IsControlLocked && !isHidden))
         {
             currentPrompt = string.Empty;
             return;
         }
 
-        IInteractable target = FindNearest();
+        // 躲藏时只操作当前柜子，防止误拾取旁边的物品
+        IInteractable target = isHidden
+            ? hiding.CurrentSpot
+            : FindNearest();
         currentPrompt = target != null
             ? target.GetPrompt(context)
             : string.Empty;
