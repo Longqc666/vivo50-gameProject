@@ -23,7 +23,9 @@ public class PlayerVisual : MonoBehaviour
 
     private void Update()
     {
-        float input = Input.GetAxisRaw("Horizontal");
+        float input = controller.IsControlLocked
+    ? 0f
+    : Input.GetAxisRaw("Horizontal");
 
         if (input != 0f)
         {

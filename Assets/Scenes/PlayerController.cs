@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float recoveryRate = 18f;
     [SerializeField] private float recoveryDelay = 1.5f;
 
+    [Header("控制设置")]
+    [SerializeField] private bool controlLocked;
+
     [Header("运行时状态（观察用）")]
     [SerializeField] private float currentStamina;
     [SerializeField] private bool isRunning;
@@ -22,10 +25,16 @@ public class PlayerController : MonoBehaviour
     private float moveInput;
     private float recoveryTimer;
 
-    // 后续供耐力条、动画和鬼怪模块读取
-    public float StaminaRatio => currentStamina / maxStamina;
+    // 供耐力条、动画和其他模块读取
+    public float StaminaRatio =>
+        maxStamina > 0f ? currentStamina / maxStamina : 0f;
+
     public bool IsRunning => isRunning;
-    public bool IsMoving => Mathf.Abs(rb.velocity.x) > 0.1f;
+
+    public bool IsMoving =>
+        rb != null && Mathf.Abs(rb.velocity.x) > 0.1f;
+
+    public bool IsControlLocked => controlLocked;
 
     private void Awake()
     {
@@ -35,9 +44,12 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        moveInput = Input.GetAxisRaw("Horizontal");
+        moveInput = controlLocked
+            ? 0f
+            : Input.GetAxisRaw("Horizontal");
 
         bool wantsToRun =
+            !controlLocked &&
             Input.GetKey(KeyCode.LeftShift) &&
             moveInput != 0f;
 
@@ -87,11 +99,37 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (controlLocked)
+        {
+            StopHorizontalMovement();
+            return;
+        }
+
         float speed = isRunning ? runSpeed : walkSpeed;
 
         rb.velocity = new Vector2(
             moveInput * speed,
             rb.velocity.y
         );
+    }
+
+    // 其他模块调用：true锁定，false解锁
+    public void SetControlLocked(bool locked)
+    {
+        controlLocked = locked;
+
+        // 清除旧输入，防止切换时继续移动
+        moveInput = 0f;
+        isRunning = false;
+
+        if (locked && rb != null)
+        {
+            StopHorizontalMovement();
+        }
+    }
+
+    private void StopHorizontalMovement()
+    {
+        rb.velocity = new Vector2(0f, rb.velocity.y);
     }
 }
