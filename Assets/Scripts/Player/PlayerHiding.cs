@@ -92,4 +92,43 @@ public class PlayerHiding : MonoBehaviour, IHidableActor
         if (locked)
             controller.SetControlLocked(true);
     }
+    // 失败重试时调用：释放柜子、恢复显示与物理、清除抓捕锁定
+    public void ResetAfterFailure()
+    {
+        isCatchLocked = false;
+
+        HidingSpot spot = CurrentSpot;
+
+        if (spot != null && ReferenceEquals(spot.Occupant, this))
+        {
+            // 由柜子释放占用，并回调 ExitHiding
+            spot.ForceRelease();
+        }
+
+        // 柜子已被移除时，也保证人物能恢复
+        if (isHidden)
+        {
+            ExitHiding();
+        }
+
+        CurrentSpot = null;
+        rb.velocity = Vector2.zero;
+
+        // 重试复位完成后允许操作
+        controller.SetControlLocked(false);
+    }
+
+    [ContextMenu("测试抓捕锁定")]
+    private void TestCatchLock()
+    {
+        if (Application.isPlaying)
+            SetCatchLocked(true);
+    }
+
+    [ContextMenu("测试失败复位")]
+    private void TestFailureReset()
+    {
+        if (Application.isPlaying)
+            ResetAfterFailure();
+    }
 }
