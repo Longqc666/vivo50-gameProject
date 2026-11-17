@@ -1,0 +1,17 @@
+{
+    "name": "D225.Sandbox",
+    "rootNamespace": "D225.Sandbox",
+    "references": [
+        "D225.Interact",
+        "D225.Quest"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
