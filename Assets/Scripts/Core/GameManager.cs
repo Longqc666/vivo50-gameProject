@@ -89,6 +89,12 @@ namespace D225.Core
             machine.Rejected += (target, reason) => Log("状态迁移被拒绝：" + reason, true);
 
             SceneManager.sceneLoaded += HandleSceneLoaded;
+
+            // 构建后冒烟（T09/T10/T11/T12）：只有命令行带 -d225-smoke 时才挂上去
+            if (FlowSmokeDriver.Requested && GetComponent<FlowSmokeDriver>() == null)
+            {
+                gameObject.AddComponent<FlowSmokeDriver>();
+            }
         }
 
         private void Start()
