@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using D225.Core;
 using D225.UI;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace D225.Flow
 {
@@ -24,6 +26,7 @@ namespace D225.Flow
         [SerializeField] private bool warnWhenMissingRouter = true;
 
         private UiRouter router;
+        private Button startButton;
         private bool subscribed;
         private Coroutine fadeRoutine;
 
@@ -56,11 +59,69 @@ namespace D225.Flow
             router.ReturnToMenuRequested += HandleReturnToMenuRequested;
             subscribed = true;
 
+            BindStartButton();
+            RegisterStartHook();
             StartCoroutine(SyncWithStateAfterFirstFrame());
+        }
+
+        /// <summary>
+        /// 主菜单的「开始」按钮原来只接了 UiRouter.StartGame（切页面，不加载场景）。
+        /// 流程接管后要额外挂一次 GameManager.BeginGame()，否则点开始只会显示 HUD、停在主菜单场景。
+        /// 这里只加监听，不改成员5 的界面脚本与已存的按钮事件。
+        /// </summary>
+        private void BindStartButton()
+        {
+            foreach (Button button in GetComponentsInChildren<Button>(true))
+            {
+                if (!string.Equals(button.name, "Start", StringComparison.Ordinal))
+                {
+                    continue;
+                }
+
+                button.onClick.AddListener(HandleStartClicked);
+                startButton = button;
+            }
+        }
+
+        private void HandleStartClicked()
+        {
+            GameManager manager = GameManager.Instance;
+            if (manager == null)
+            {
+                Debug.LogWarning("[D225.流程] 开始按钮被点击，但没有 GameManager：请从 Scene_Boot 启动。", this);
+                return;
+            }
+
+            manager.BeginGame();
+        }
+
+        /// <summary>给冒烟用：注册「真实点一次开始按钮」的回调。</summary>
+        private Func<bool> startHook;
+
+        private void RegisterStartHook()
+        {
+            startHook = () =>
+            {
+                if (startButton == null)
+                {
+                    return false;
+                }
+
+                startButton.onClick.Invoke();
+                return true;
+            };
+
+            FlowStartRequest.Handler = startHook;
         }
 
         private void OnDestroy()
         {
+            if (startHook != null)
+            {
+                FlowStartRequest.Clear(startHook);
+                startHook = null;
+            }
+
             if (!subscribed || router == null)
             {
                 return;

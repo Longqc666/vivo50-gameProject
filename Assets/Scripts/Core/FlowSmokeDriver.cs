@@ -67,8 +67,8 @@ namespace D225.Core
 
             Check(manager.State == GameStateId.MainMenu, "启动后应在主菜单，实际 " + manager.State);
 
-            // ---- 开始游戏 → A 区
-            Check(manager.BeginGame(), "BeginGame 应返回 true");
+            // ---- 开始游戏 → A 区（走真实按钮路径，而不是绕过界面直接 BeginGame）
+            Check(FlowStartRequest.TryInvoke(), "主菜单「开始」按钮应已绑定流程（FlowStartRequest 未注册）");
             yield return WaitRegion("A", "进入 A 区");
             Check(manager.State == GameStateId.Explore, "A 区应为 Explore，实际 " + manager.State);
             Check(manager.CurrentCheckpoint != null, "进入 A 区应写入检查点");
