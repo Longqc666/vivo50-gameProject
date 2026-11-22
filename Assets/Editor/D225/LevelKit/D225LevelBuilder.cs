@@ -1,9 +1,9 @@
 // D225LevelBuilder.cs —— 三段正式关卡场景生成器（成员3 · 彭靖毅）
 //
 // 用法（Unity 菜单）：
-//   D225/关卡/1. 检查关卡资源          → 先看缺什么 Prefab / 图
-//   D225/关卡/2. 生成三段正式场景      → 生成并保存 Scene_A_Dorm / B_Corridor / C_Hall
-//   D225/关卡/3. 写入 Build Settings   → 按 A → B → C 顺序追加（A 为启动场景）
+//   D225/关卡/1. 检查关卡资源          → 先看缺什么 Prefab / 图 / 运行时脚本
+//   D225/关卡/2. 生成关卡场景          → 生成并保存 A/B/C 三段 + 224/226/222 三间邻室
+//   D225/关卡/3. 写入 Build Settings   → 把 6 个场景追加进 Build Settings（A 为启动场景）
 //   D225/关卡/9. 清理辅助色块          → 构建前删掉 Gizmo_* 预览色块
 //
 // 命令行（CI / 免开界面）：
@@ -41,6 +41,9 @@ namespace D225.Level.EditorTools
         static readonly Color VisionTint = new Color(0.30f, 0.78f, 0.86f, 0.22f);
         static readonly Color CheckpointTint = new Color(0.25f, 0.85f, 0.45f, 0.85f);
         static readonly Color WaypointTint = new Color(0.95f, 0.42f, 0.55f, 0.85f);
+        static readonly Color SpawnTint = new Color(0.35f, 0.72f, 0.95f, 0.9f);
+        // 门禁状态灯的世界高度：走廊图门框顶 +0.81、宿舍图门框顶 +1.05，取 1.35 让灯落在两图门框上方的空白墙面。
+        const float LampWorldY = 1.12f;
 
         // ---------------------------------------------------------------- 菜单
 
@@ -52,7 +55,7 @@ namespace D225.Level.EditorTools
             EditorUtility.DisplayDialog("关卡资源检查", report, "好");
         }
 
-        [MenuItem("D225/关卡/2. 生成三段正式场景", priority = 11)]
+        [MenuItem("D225/关卡/2. 生成关卡场景（A/B/C + 三间邻室）", priority = 11)]
         public static void BuildAllScenesMenu()
         {
             if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
@@ -65,7 +68,7 @@ namespace D225.Level.EditorTools
             EditorUtility.DisplayDialog("关卡生成完成", report, "好");
         }
 
-        [MenuItem("D225/关卡/3. 写入 Build Settings（A → B → C）", priority = 12)]
+        [MenuItem("D225/关卡/3. 写入 Build Settings（6 个场景）", priority = 12)]
         public static void WriteBuildSettingsMenu()
         {
             var report = WriteBuildSettings();
@@ -109,6 +112,10 @@ namespace D225.Level.EditorTools
                 missing.Add($"  · {PlayerPrefabPath}（玩家，成员1 提供）");
             if (FindTypeBySimpleName("CameraFollow") == null)
                 missing.Add("  · 脚本 CameraFollow（成员1 提供，用于相机跟随；缺失时相机将固定居中）");
+            if (FindTypeBySimpleName("SceneDoor") == null)
+                missing.Add("  · 脚本 SceneDoor（Assets/Scripts/Level/SceneDoor.cs，场景门交互；缺失时门只是空触发区）");
+            if (FindTypeBySimpleName("SceneSpawnPoint") == null)
+                missing.Add("  · 脚本 SceneSpawnPoint（Assets/Scripts/Level/D225SceneRouter.cs，跨场景落点；缺失时玩家不会换位置）");
             if (LayerMask.NameToLayer(VisionLayerName) < 0)
                 missing.Add($"  · Layer「{VisionLayerName}」（生成时会自动创建）");
 
@@ -202,6 +209,12 @@ namespace D225.Level.EditorTools
                         break;
                     case D225LevelLayoutData.Kind.Hint:
                         go = CreateHint(e);
+                        break;
+                    case D225LevelLayoutData.Kind.Door:
+                        go = CreateDoor(e, white);
+                        break;
+                    case D225LevelLayoutData.Kind.Spawn:
+                        go = CreateSpawn(e);
                         break;
                 }
 
@@ -330,6 +343,13 @@ namespace D225.Level.EditorTools
             return go;
         }
 
+        /// <summary>给辅助色块挂上运行时隐藏组件（编辑器里照常可见）。</summary>
+        static void HideAtRuntime(GameObject target)
+        {
+            var t = FindTypeBySimpleName("D225EditorGizmo");
+            if (t != null && target.GetComponent(t) == null) target.AddComponent(t);
+        }
+
         static GameObject CreateMarker(D225LevelLayoutData.Entry e, Color tint, string prefix)
         {
             // 空锚点（给成员6 存档系统收集）+ 仅编辑器可见的预览色块
@@ -342,6 +362,7 @@ namespace D225.Level.EditorTools
             sr.sortingOrder = 88;
             vis.transform.localScale = new Vector3(0.14f, 0.14f, 1f);
             vis.transform.localPosition = Vector3.zero;
+            HideAtRuntime(vis);
             return go;
         }
 
@@ -352,6 +373,99 @@ namespace D225.Level.EditorTools
             bc.isTrigger = true;
             bc.size = new Vector2(e.W <= 0 ? 1.6f : e.W, e.H <= 0 ? 2.4f : e.H);
             return go;
+        }
+
+        /// <summary>
+        /// 场景门：墙上的可交互区域，挂运行时脚本 SceneDoor（成员3 的临时实现）。
+        /// 正式版若成员4 出自己的门交互物，把这个方法换掉即可，坐标与物体名不用动。
+        /// </summary>
+        static GameObject CreateDoor(D225LevelLayoutData.Entry e, Sprite white)
+        {
+            // 门在背景图里已经画好了，不叠任何色块：只留一个不可见的触发区 + SceneDoor 组件。
+            // 玩家走近看到 [E] 提示即可；编辑器里选中门对象能看到 Gizmos 线框（SceneDoor.OnDrawGizmosSelected）。
+            var go = new GameObject(e.Name);
+
+            var bc = go.AddComponent<BoxCollider2D>();
+            bc.isTrigger = true;
+            bc.size = new Vector2(e.W, e.H);
+
+            var type = FindTypeBySimpleName("SceneDoor");
+            if (type == null)
+            {
+                Debug.LogError($"[D225] 找不到 SceneDoor 脚本（应为 Assets/Scripts/Level/SceneDoor.cs），" +
+                               $"{e.Scene} / {e.Name} 只生成了空触发区。");
+                return go;
+            }
+
+            var comp = go.AddComponent(type);
+            var so = new SerializedObject(comp);
+            SetStr(so, "doorPlate", e.DoorPlate);
+            SetStr(so, "sceneName", e.DoorScene);
+            SetStr(so, "spawnId", e.DoorSpawn);
+            SetStr(so, "doorId", e.Name);
+            var lp = so.FindProperty("locked");
+            if (lp != null && lp.propertyType == SerializedPropertyType.Boolean) lp.boolValue = e.DoorLocked;
+            so.ApplyModifiedPropertiesWithoutUndo();
+
+            if (!string.IsNullOrEmpty(e.DoorFlag))
+            {
+                var f = type.GetField("requiredFlag",
+                    BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+                if (f != null && f.FieldType.IsEnum)
+                {
+                    try { f.SetValue(comp, Enum.Parse(f.FieldType, e.DoorFlag)); }
+                    catch { Debug.LogWarning($"[D225] {e.Name} 的 requiredFlag「{e.DoorFlag}」不是合法枚举值。"); }
+                }
+            }
+
+            // 门上不盖色块；在门框上方的空白墙面点一盏小指示灯（门禁状态灯），
+            // 位置固定在 y=1.35：走廊图门框顶 +0.81、宿舍图门框顶 +1.05，两处都在灯下方，不会压到门。
+            var lamp = new GameObject("Lamp");
+            lamp.transform.SetParent(go.transform, false);
+            lamp.transform.localPosition = new Vector3(0f, LampWorldY - e.Y, 0f);
+            var lsr = lamp.AddComponent<SpriteRenderer>();
+            lsr.sprite = white;
+            lsr.color = e.DoorLocked
+                ? new Color(0.58f, 0.24f, 0.22f, 0.85f)
+                : new Color(0.30f, 0.56f, 0.46f, 0.85f);
+            lsr.sortingOrder = e.Sorting;
+            lamp.transform.localScale = new Vector3(0.36f, 0.14f, 1f);
+            return go;
+        }
+
+        /// <summary>出生点：只挂 SceneSpawnPoint（空物体 + 编辑器预览色块），无碰撞。</summary>
+        static GameObject CreateSpawn(D225LevelLayoutData.Entry e)
+        {
+            var go = new GameObject(e.Name);
+
+            var type = FindTypeBySimpleName("SceneSpawnPoint");
+            if (type == null)
+            {
+                Debug.LogError($"[D225] 找不到 SceneSpawnPoint 脚本，{e.Name} 不会把玩家挪过来。");
+            }
+            else
+            {
+                var comp = go.AddComponent(type);
+                var so = new SerializedObject(comp);
+                SetStr(so, "spawnId", string.IsNullOrEmpty(e.ExtraValue) ? e.Name : e.ExtraValue);
+                so.ApplyModifiedPropertiesWithoutUndo();
+            }
+
+            var vis = new GameObject("Gizmo_Spawn_" + e.Name);
+            vis.transform.SetParent(go.transform, false);
+            var sr = vis.AddComponent<SpriteRenderer>();
+            sr.sprite = LoadWhiteSquare();
+            sr.color = SpawnTint;
+            sr.sortingOrder = 88;
+            vis.transform.localScale = new Vector3(0.1f, 0.5f, 1f);
+            HideAtRuntime(vis);
+            return go;
+        }
+
+        static void SetStr(SerializedObject so, string prop, string value)
+        {
+            var p = so.FindProperty(prop);
+            if (p != null && p.propertyType == SerializedPropertyType.String) p.stringValue = value ?? "";
         }
 
         static GameObject CreateCamera(D225LevelLayoutData.SceneSpec spec, Transform player)
