@@ -92,6 +92,28 @@ namespace D225.Core
             Check(manager.CurrentRegion != null && manager.CurrentRegion.Id == "B",
                   "未开楼梯门不应离开 B 区，实际在 " + (manager.CurrentRegion?.Id ?? "null"));
 
+            // ---- 抓捕 → 失败 → 从检查点重试（T09）
+            manager.Quest.SetFlag(PuzzleFlag.FuseAcquired); // 造一条「永久进度」，重试后必须还在
+            Check(manager.NotifyPlayerCaught("冒烟-抓捕"), "探索中应能结算抓捕");
+            yield return WaitUntil(() => manager.State == GameStateId.Failed, 5f, "进入失败态");
+            Check(manager.State == GameStateId.Failed, "应进入 Failed，实际 " + manager.State);
+            Check(Mathf.Approximately(Time.timeScale, 0f), "失败时 timeScale 应为 0");
+            Check(!manager.RequestPause(true), "失败态不应还能暂停");
+
+            Check(manager.RetryFromCheckpoint(), "失败后应能重试");
+            yield return WaitUntil(
+                () => manager.State == GameStateId.Explore &&
+                      manager.CurrentRegion != null &&
+                      manager.CurrentRegion.Id == "B",
+                RegionTimeout,
+                "重试后回到 B 区探索");
+            yield return new WaitForSecondsRealtime(0.8f);
+            Check(manager.State == GameStateId.Explore, "重试后应回到 Explore，实际 " + manager.State);
+            Check(manager.CurrentCheckpoint != null &&
+                  string.Equals(manager.CurrentCheckpoint.SceneId, "B", System.StringComparison.Ordinal),
+                  "重试后检查点应仍在 B 区");
+            Check(manager.Quest.HasFlag(PuzzleFlag.FuseAcquired), "重试后永久进度（FuseAcquired）应保留");
+
             // ---- 开门后应切 C 区
             manager.Quest.SetFlag(PuzzleFlag.StairDoorUnlocked);
             yield return WalkToX(RegionCatalog.StairDoorX + 0.6f, "开门后走向楼梯门", allowStuck: true);
