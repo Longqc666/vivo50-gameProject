@@ -1,0 +1,17 @@
+{
+    "name": "D225.Core",
+    "rootNamespace": "D225.Core",
+    "references": [
+        "D225.Quest",
+        "D225.Interact"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,26 @@
+{
+    "name": "D225.Core.Tests",
+    "rootNamespace": "D225.Core.Tests",
+    "references": [
+        "D225.Core",
+        "D225.Quest",
+        "D225.Interact",
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
